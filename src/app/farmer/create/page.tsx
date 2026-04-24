@@ -34,10 +34,22 @@ interface FormData {
   uploadedImages: string[];
 }
 
+interface Scene {
+  scene_id: string;
+  scene_name: string;
+  scene_description: string;
+  time: string;
+}
+
+interface Dialogue {
+  text: string;
+  speaker?: string;
+}
+
 interface GeneratedScript {
   title: string;
-  scenes: string[];
-  dialogues: string[];
+  scenes: Scene[];
+  dialogues: Dialogue[];
   productMention?: string;
 }
 
@@ -516,7 +528,10 @@ export default function FarmerCreatePage() {
                         <Badge className="shrink-0 bg-[#8bc34a]/20 text-[#2d5016]">
                           {i + 1}
                         </Badge>
-                        <p className="text-[#4a7c23]">{scene}</p>
+                        <div className="text-[#4a7c23]">
+                          <p className="font-medium">{scene.scene_name}</p>
+                          <p className="text-sm opacity-80">{scene.scene_description}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -525,7 +540,14 @@ export default function FarmerCreatePage() {
                   <h4 className="font-semibold text-[#2d5016] mb-2">台词对话</h4>
                   <div className="space-y-3 bg-[#8bc34a]/10 rounded-lg p-4">
                     {generatedScript.dialogues.map((dialogue, i) => (
-                      <p key={i} className="text-[#4a7c23] italic">"{dialogue}"</p>
+                      <p key={i} className="text-[#4a7c23] italic">
+                        "{dialogue.text}"
+                        {dialogue.speaker && (
+                          <span className="text-xs font-normal block text-[#4a7c23]/60">
+                            —— {dialogue.speaker}
+                          </span>
+                        )}
+                      </p>
                     ))}
                   </div>
                 </div>
