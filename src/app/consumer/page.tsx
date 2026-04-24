@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-// 短剧封面图片 - 乡村助农短剧风格
+// 短剧封面图片 - 乡村助农短剧风格（人物+乡村场景）
 const dramaCovers: Record<string, string> = {
   '霸总': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop',
   '重生': 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=600&fit=crop',
@@ -24,12 +24,30 @@ const dramaCovers: Record<string, string> = {
   '悬疑': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=600&fit=crop',
   '搞笑': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=600&fit=crop',
   '励志': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
+  '乡村': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
+  '民俗版': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
+  '故事版': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=600&fit=crop',
   'default': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
 };
 
 // 根据类型获取封面图片
 const getDramaCover = (category: string): string => {
-  return dramaCovers[category] || dramaCovers.default;
+  // 简化版：直接根据类型返回对应封面
+  const coverMap: Record<string, string> = {
+    '霸总': dramaCovers['霸总'],
+    '重生': dramaCovers['重生'],
+    '末世': dramaCovers['末世'],
+    '穿越': dramaCovers['穿越'],
+    '豪门': dramaCovers['豪门'],
+    '宫斗': dramaCovers['宫斗'],
+    '仙侠': dramaCovers['仙侠'],
+    '乡村': dramaCovers['乡村版'],
+    '乡村版': dramaCovers['乡村版'],
+    '民俗版': dramaCovers['乡村版'],
+    '带货': dramaCovers['带货版'],
+    '带货版': dramaCovers['带货版'],
+  };
+  return coverMap[category] || dramaCovers['default'];
 };
 
 // 农产品封面图片 - 根据产品名称自动匹配
