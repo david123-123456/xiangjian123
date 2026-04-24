@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import {
@@ -54,6 +54,25 @@ interface GeneratedScript {
 }
 
 export default function FarmerCreatePage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <FarmerCreateContent />
+    </Suspense>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-center">
+        <Loader2 className="w-8 h-8 animate-spin mx-auto text-[#2d5016] mb-4" />
+        <p className="text-[#2d5016]">加载中...</p>
+      </div>
+    </div>
+  );
+}
+
+function FarmerCreateContent() {
   const searchParams = useSearchParams();
   const initialType = searchParams.get('type') as TemplateType || 'story';
   
