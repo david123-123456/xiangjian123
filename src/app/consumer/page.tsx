@@ -34,14 +34,26 @@ const getDramaCover = (category: string): string => {
   return dramaCovers[category] || dramaCovers.default;
 };
 
-// 农产品封面图片 - 使用公开可访问的图片
-const productCovers = {
+// 农产品封面图片 - 根据产品名称自动匹配
+const productCoverImages: Record<string, string> = {
   apple: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=300&fit=crop',
   honey: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=300&fit=crop',
   vegetables: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
   tea: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&h=300&fit=crop',
   eggs: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop',
+  default: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=300&fit=crop',
 };
+
+// 根据产品名称返回对应的封面图片
+function getProductCover(productName: string): string {
+  const name = productName.toLowerCase();
+  if (name.includes('苹果') || name.includes('富士')) return productCoverImages.apple;
+  if (name.includes('蜂蜜') || name.includes('蜂')) return productCoverImages.honey;
+  if (name.includes('蔬菜') || name.includes('青菜') || name.includes('白菜') || name.includes('红薯') || name.includes('薯')) return productCoverImages.vegetables;
+  if (name.includes('茶') || name.includes('大红袍') || name.includes('龙井')) return productCoverImages.tea;
+  if (name.includes('鸡蛋') || name.includes('土蛋') || name.includes('蛋')) return productCoverImages.eggs;
+  return productCoverImages.default;
+}
 
 const featuredDramas = [
   {
@@ -103,7 +115,6 @@ const hotProducts = [
     price: 39.9,
     originalPrice: 59.9,
     sales: 2580,
-    image: productCovers.apple,
     farm: '红富士农场',
   },
   {
@@ -112,7 +123,6 @@ const hotProducts = [
     price: 68.0,
     originalPrice: 98.0,
     sales: 1860,
-    image: productCovers.honey,
     farm: '深山蜂场',
   },
   {
@@ -121,7 +131,6 @@ const hotProducts = [
     price: 28.8,
     originalPrice: 38.8,
     sales: 3200,
-    image: productCovers.vegetables,
     farm: '绿色田园',
   },
   {
@@ -130,7 +139,6 @@ const hotProducts = [
     price: 88.0,
     originalPrice: 128.0,
     sales: 1450,
-    image: productCovers.tea,
     farm: '云雾茶园',
   },
   {
@@ -139,7 +147,6 @@ const hotProducts = [
     price: 45.0,
     originalPrice: 58.0,
     sales: 2100,
-    image: productCovers.eggs,
     farm: '乡村鸡舍',
   },
 ];
@@ -255,7 +262,7 @@ export default function ConsumerHomePage() {
             <Card key={product.id} className="rural-card-hover overflow-hidden">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src={product.image} 
+                  src={getProductCover(product.name)} 
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />

@@ -9,14 +9,39 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// 农产品封面图片 - 使用公开可访问的图片
-const productCovers = {
+// 农产品封面图片 - 根据产品名称自动匹配
+const productCoverImages = {
   apple: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=300&fit=crop',
   honey: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=300&fit=crop',
   vegetables: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
   tea: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&h=300&fit=crop',
   eggs: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop',
+  shrimp: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=300&fit=crop',
+  chicken: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=300&fit=crop',
+  strawberry: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=300&fit=crop',
+  mushroom: 'https://images.unsplash.com/photo-1504545102780-26774c1bb073?w=400&h=300&fit=crop',
+  corn: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop',
+  rice: 'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=400&h=300&fit=crop',
+  default: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=300&fit=crop',
 };
+
+// 根据产品名称返回对应的封面图片
+function getProductCover(productName: string): string {
+  const name = productName.toLowerCase();
+  if (name.includes('苹果') || name.includes('富士')) return productCoverImages.apple;
+  if (name.includes('蜂蜜') || name.includes('蜂')) return productCoverImages.honey;
+  if (name.includes('红薯') || name.includes('薯') || name.includes('地瓜')) return productCoverImages.vegetables;
+  if (name.includes('蔬菜') || name.includes('青菜') || name.includes('白菜')) return productCoverImages.vegetables;
+  if (name.includes('茶') || name.includes('大红袍') || name.includes('龙井')) return productCoverImages.tea;
+  if (name.includes('鸡蛋') || name.includes('土蛋') || name.includes('蛋')) return productCoverImages.eggs;
+  if (name.includes('虾') || name.includes('对虾') || name.includes('明虾')) return productCoverImages.shrimp;
+  if (name.includes('鸡') || name.includes('土鸡') || name.includes('母鸡')) return productCoverImages.chicken;
+  if (name.includes('草莓') || name.includes('莓')) return productCoverImages.strawberry;
+  if (name.includes('蘑菇') || name.includes('菌') || name.includes('香菇')) return productCoverImages.mushroom;
+  if (name.includes('玉米') || name.includes('苞谷') || name.includes('棒子')) return productCoverImages.corn;
+  if (name.includes('大米') || name.includes('稻') || name.includes('米')) return productCoverImages.rice;
+  return productCoverImages.default;
+}
 
 const allProducts = [
   {
@@ -26,7 +51,6 @@ const allProducts = [
     originalPrice: 59.9,
     sales: 2580,
     rating: 4.9,
-    image: productCovers.apple,
     farm: '红富士农场',
     location: '山东烟台',
     tags: ['水果', '有机'],
@@ -39,7 +63,6 @@ const allProducts = [
     originalPrice: 98.0,
     sales: 1860,
     rating: 4.8,
-    image: productCovers.honey,
     farm: '深山蜂场',
     location: '云南大理',
     tags: ['蜂蜜', '天然'],
@@ -52,7 +75,6 @@ const allProducts = [
     originalPrice: 38.8,
     sales: 3200,
     rating: 4.7,
-    image: productCovers.vegetables,
     farm: '绿色田园',
     location: '河南开封',
     tags: ['蔬菜', '有机'],
@@ -65,7 +87,6 @@ const allProducts = [
     originalPrice: 268.0,
     sales: 980,
     rating: 5.0,
-    image: productCovers.tea,
     farm: '岩茶世家',
     location: '福建武夷山',
     tags: ['茶叶', '名茶'],
@@ -78,7 +99,6 @@ const allProducts = [
     originalPrice: 65.0,
     sales: 1450,
     rating: 4.6,
-    image: productCovers.vegetables,
     farm: '秦岭山珍',
     location: '陕西西安',
     tags: ['菌类', '野生'],
@@ -91,7 +111,6 @@ const allProducts = [
     originalPrice: 98.0,
     sales: 2100,
     rating: 4.9,
-    image: productCovers.vegetables,
     farm: '五常稻香',
     location: '黑龙江五常',
     tags: ['粮食', '优质'],
@@ -104,7 +123,6 @@ const allProducts = [
     originalPrice: 58.0,
     sales: 3200,
     rating: 4.8,
-    image: productCovers.eggs,
     farm: '乡村鸡舍',
     location: '安徽黄山',
     tags: ['禽蛋', '天然'],
@@ -117,7 +135,6 @@ const allProducts = [
     originalPrice: 388.0,
     sales: 890,
     rating: 5.0,
-    image: productCovers.vegetables,
     farm: '阳澄蟹庄',
     location: '江苏苏州',
     tags: ['水产', '鲜活'],
@@ -130,7 +147,6 @@ const allProducts = [
     originalPrice: 78.0,
     sales: 1680,
     rating: 4.7,
-    image: productCovers.vegetables,
     farm: '湘味坊',
     location: '湖南湘西',
     tags: ['肉类', '传统'],
@@ -207,7 +223,7 @@ export default function ConsumerShopPage() {
             <Card key={product.id} className="rural-card-hover overflow-hidden">
               <div className="aspect-square relative overflow-hidden">
                 <img 
-                  src={product.image} 
+                  src={getProductCover(product.name)} 
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
