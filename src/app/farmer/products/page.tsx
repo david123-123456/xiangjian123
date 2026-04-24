@@ -11,6 +11,26 @@ import {
   Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger
 } from '@/components/ui/dialog';
 
+// 农产品封面映射
+const productCoverMap: Record<string, string> = {
+  '苹果': 'https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=400&h=400&fit=crop',
+  '番茄': 'https://images.unsplash.com/photo-1546470427-227c7b3f8310?w=400&h=400&fit=crop',
+  '蜂蜜': 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop',
+  '鸡蛋': 'https://images.unsplash.com/photo-1569288052389-dac9b01c9c05?w=400&h=400&fit=crop',
+  '茶叶': 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&h=400&fit=crop',
+  '蔬菜': 'https://images.unsplash.com/photo-1518843875459-f738682238a6?w=400&h=400&fit=crop',
+  'default': 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=400&fit=crop',
+};
+
+const getProductCover = (name: string): string => {
+  for (const [keyword, url] of Object.entries(productCoverMap)) {
+    if (keyword !== 'default' && name.includes(keyword)) {
+      return url;
+    }
+  }
+  return productCoverMap['default'];
+};
+
 const myProducts = [
   {
     id: '1',
@@ -162,9 +182,11 @@ export default function FarmerProductsPage() {
           {myProducts.map((product) => (
             <Card key={product.id} className="overflow-hidden">
               <div className="aspect-square bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <ShoppingBag className="w-20 h-20 text-[#4a7c23]/40" />
-                </div>
+                <img 
+                  src={getProductCover(product.name)} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
                 <Badge
                   className={`absolute top-2 right-2 ${
                     product.status === '在售' ? 'bg-[#2d5016]' : 'bg-red-500'
