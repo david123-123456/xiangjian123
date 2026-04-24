@@ -13,6 +13,9 @@
     nav a:hover { border-bottom: 2px solid white; }
     .page { display: none; }
     .page.active { display: block; }
+    .movie-poster { position: relative; overflow: hidden; }
+    .movie-poster::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(transparent, rgba(0,0,0,0.7)); }
+    .movie-poster .title { position: absolute; bottom: 8px; left: 0; right: 0; z-index: 1; color: white; font-weight: bold; text-shadow: 1px 1px 3px black; }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -90,45 +93,35 @@
           <span class="text-red-500 mr-2">🔥</span> 热门短剧
         </h2>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop" alt="霸总" class="w-full h-48 object-cover">
-            <div class="p-3">
-              <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">霸总</span>
-              <h3 class="font-bold mt-2 text-sm">乡村总裁</h3>
-              <p class="text-gray-500 text-xs mt-1">128.5万播放</p>
-            </div>
+          <!-- 霸总 -->
+          <div class="movie-poster rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer aspect-[3/4]">
+            <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e3f0827b-666b-4a6f-9943-16e885411b33.jpeg?sign=1808561102-0bca465b7a-0-d702efa01b946e500a1b53aa015af332b687b29dd1b8c1c9d441e388bef2378e" alt="乡村霸总" class="w-full h-full object-cover">
+            <div class="title px-2 text-sm">乡村霸总</div>
+            <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded z-10">霸总</span>
           </div>
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=400&fit=crop" alt="重生" class="w-full h-48 object-cover">
-            <div class="p-3">
-              <span class="bg-purple-500 text-white text-xs px-2 py-1 rounded">重生</span>
-              <h3 class="font-bold mt-2 text-sm">重生之我在农村</h3>
-              <p class="text-gray-500 text-xs mt-1">96.2万播放</p>
-            </div>
+          <!-- 重生 -->
+          <div class="movie-poster rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer aspect-[3/4]">
+            <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_a83d2e97-4196-4d3f-b304-13e601d030ad.jpeg?sign=1808561123-ee0e9583bb-0-aaed38b48507961a6def4ef1479a2148011c4af7227e76f72586db80e867ad3a" alt="重生之我在农村" class="w-full h-full object-cover">
+            <div class="title px-2 text-sm">重生之我在农村</div>
+            <span class="absolute top-2 right-2 bg-purple-500 text-white text-xs px-2 py-1 rounded z-10">重生</span>
           </div>
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&h=400&fit=crop" alt="末世" class="w-full h-48 object-cover">
-            <div class="p-3">
-              <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">末世</span>
-              <h3 class="font-bold mt-2 text-sm">末世农庄</h3>
-              <p class="text-gray-500 text-xs mt-1">88.7万播放</p>
-            </div>
+          <!-- 末世 -->
+          <div class="movie-poster rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer aspect-[3/4]">
+            <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_77845414-78e9-4ab6-baa6-79e8a285fd09.jpeg?sign=1808561137-85f0db59fa-0-adf42ed4886bac197e456bbb99902cb65d37b8ee86496dc110c68a296f5fdeb2" alt="末世农庄" class="w-full h-full object-cover">
+            <div class="title px-2 text-sm">末世农庄</div>
+            <span class="absolute top-2 right-2 bg-gray-700 text-white text-xs px-2 py-1 rounded z-10">末世</span>
           </div>
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=300&h=400&fit=crop" alt="穿越" class="w-full h-48 object-cover">
-            <div class="p-3">
-              <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded">穿越</span>
-              <h3 class="font-bold mt-2 text-sm">穿越乡村记</h3>
-              <p class="text-gray-500 text-xs mt-1">75.3万播放</p>
-            </div>
+          <!-- 穿越 -->
+          <div class="movie-poster rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer aspect-[3/4]">
+            <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_aef386a6-97d9-44e7-b495-0ba240451c1a.jpeg?sign=1808561153-6dafd8395f-0-d4a10f05c190223f9f2bede0bfec8b075f880d2dae885aedf57ca86d567a5d44" alt="穿越乡村记" class="w-full h-full object-cover">
+            <div class="title px-2 text-sm">穿越乡村记</div>
+            <span class="absolute top-2 right-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded z-10">穿越</span>
           </div>
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
-            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=300&h=400&fit=crop" alt="乡村" class="w-full h-48 object-cover">
-            <div class="p-3">
-              <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">乡村</span>
-              <h3 class="font-bold mt-2 text-sm">田园牧歌</h3>
-              <p class="text-gray-500 text-xs mt-1">65.8万播放</p>
-            </div>
+          <!-- 民俗 -->
+          <div class="movie-poster rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer aspect-[3/4]">
+            <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_882f051c-ec46-4eae-bfc9-b77a5b23fc85.jpeg?sign=1808561123-8a24ca5a9b-0-940178bcaaa5d3dbfd65d1cf9f30068f25b6ff058c42d251fd66ba1aa8f489aa" alt="田园牧歌" class="w-full h-full object-cover">
+            <div class="title px-2 text-sm">田园牧歌</div>
+            <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded z-10">民俗</span>
           </div>
         </div>
       </section>
@@ -220,7 +213,9 @@
           </h2>
           <div class="space-y-4">
             <div class="flex items-center p-3 bg-gray-50 rounded-xl">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="封面" class="w-16 h-16 rounded-lg object-cover">
+              <div class="movie-poster w-14 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e3f0827b-666b-4a6f-9943-16e885411b33.jpeg?sign=1808561102-0bca465b7a-0-d702efa01b946e500a1b53aa015af332b687b29dd1b8c1c9d441e388bef2378e" alt="封面" class="w-full h-full object-cover">
+              </div>
               <div class="ml-4 flex-1">
                 <h3 class="font-bold text-sm">乡村霸总第一集</h3>
                 <p class="text-gray-500 text-xs mt-1">故事版 · 霸总</p>
@@ -228,15 +223,19 @@
               <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded">已完成</span>
             </div>
             <div class="flex items-center p-3 bg-gray-50 rounded-xl">
-              <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=100&h=100&fit=crop" alt="封面" class="w-16 h-16 rounded-lg object-cover">
+              <div class="movie-poster w-14 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_86799280-333d-4125-b347-3abe7d8183dc.jpeg?sign=1808561137-690ba36249-0-de2ace5df6f8eb38ffe4d951d9bd452ed18437b14543d4de6f555c4d058e9710" alt="封面" class="w-full h-full object-cover">
+              </div>
               <div class="ml-4 flex-1">
-                <h3 class="font-bold text-sm">助农带货第一期</h3>
-                <p class="text-gray-500 text-xs mt-1">带货版</p>
+                <h3 class="font-bold text-sm">末世农庄预告</h3>
+                <p class="text-gray-500 text-xs mt-1">故事版 · 末世</p>
               </div>
               <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">创作中</span>
             </div>
             <div class="flex items-center p-3 bg-gray-50 rounded-xl">
-              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=100&h=100&fit=crop" alt="封面" class="w-16 h-16 rounded-lg object-cover">
+              <div class="movie-poster w-14 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                <img src="https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_fbcd6467-6da8-4e11-9af4-561aaf0c77af.jpeg?sign=1808561123-e7a33b5b84-0-bdfae54fdc44794cb0c303defdff94327a30192c2b6d00b724aa1199a74c5bf9" alt="封面" class="w-full h-full object-cover">
+              </div>
               <div class="ml-4 flex-1">
                 <h3 class="font-bold text-sm">乡村文化纪录片</h3>
                 <p class="text-gray-500 text-xs mt-1">民俗版</p>
