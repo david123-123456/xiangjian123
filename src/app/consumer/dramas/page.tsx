@@ -12,29 +12,29 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 // 短剧封面图片 - 乡村助农短剧风格
 const dramaCovers: Record<string, string> = {
-  // 故事版类型 - 乡村励志风格短剧海报
-  '霸总': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_222e0fba-4bb8-4c6e-86e3-30d7b1734f5e.jpeg',
-  '重生': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_787dad68-7d19-4aa6-a2d9-292d79291572.jpeg',
-  '末世': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_65a46e1b-8306-4393-a05a-ccb7f7f52763.jpeg',
-  '穿越': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_734a7c06-bc85-439c-b2f7-cd922386d8ba.jpeg',
-  '豪门': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e08dfe1c-9704-4ec9-9deb-5d6a40624098.jpeg',
-  '宫斗': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_d9c87f06-5bca-4bdb-bbbf-73d19ffd7a28.jpeg',
-  '仙侠': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_0a84bf70-6071-40e3-b99e-831d52fa07d3.jpeg',
+  // 故事版类型 - 乡村励志风格短剧海报（人物+乡村场景）
+  '霸总': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop',
+  '重生': 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=600&fit=crop',
+  '末世': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=600&fit=crop',
+  '穿越': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=600&fit=crop',
+  '豪门': 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=600&fit=crop',
+  '宫斗': 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop',
+  '仙侠': 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=600&fit=crop',
   // 带货版类型 - 直播带货风格
-  '带货': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e192f84e-9d30-4322-a009-f32a904d573c.jpeg',
-  '创业': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e192f84e-9d30-4322-a009-f32a904d573c.jpeg',
+  '带货': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=600&fit=crop',
+  '创业': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=600&fit=crop',
   // 民俗版类型 - 乡村文化故事
-  '非遗': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_507061f9-b0eb-4ba9-a49a-5bbd1b2da774.jpeg',
-  '文化': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_507061f9-b0eb-4ba9-a49a-5bbd1b2da774.jpeg',
-  '传承': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_507061f9-b0eb-4ba9-a49a-5bbd1b2da774.jpeg',
+  '非遗': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
+  '文化': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
+  '传承': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
   // 其他类型
-  '爱情': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_222e0fba-4bb8-4c6e-86e3-30d7b1734f5e.jpeg',
-  '科幻': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_65a46e1b-8306-4393-a05a-ccb7f7f52763.jpeg',
-  '悬疑': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_65a46e1b-8306-4393-a05a-ccb7f7f52763.jpeg',
-  '搞笑': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_734a7c06-bc85-439c-b2f7-cd922386d8ba.jpeg',
-  '励志': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_507061f9-b0eb-4ba9-a49a-5bbd1b2da774.jpeg',
+  '爱情': 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=600&fit=crop',
+  '科幻': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=600&fit=crop',
+  '悬疑': 'https://images.unsplash.com/photo-1509248961895-40216a3149f8?w=400&h=600&fit=crop',
+  '搞笑': 'https://images.unsplash.com/photo-1543592939-a4e0c0f5ddcc?w=400&h=600&fit=crop',
+  '励志': 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=600&fit=crop',
   // 默认封面
-  'default': 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_507061f9-b0eb-4ba9-a49a-5bbd1b2da774.jpeg',
+  'default': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=600&fit=crop',
 };
 
 // 根据类型获取封面图片
