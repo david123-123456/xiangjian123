@@ -9,13 +9,13 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// 农产品封面图片
+// 农产品封面图片 - 使用公开可访问的图片
 const productCovers = {
-  apple: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_275cd96f-c3ed-441f-a8ad-7331cd069caf.jpeg',
-  honey: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_6b135382-9e83-4ef8-8f2f-7a9a32c735e6.jpeg',
-  vegetables: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_c85a8acf-936d-4e44-9bf4-6cfdaa47de0f.jpeg',
-  tea: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_0823672b-1d42-4a03-bc54-5fcb0d3fdda8.jpeg',
-  eggs: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_b070fb9c-26c3-4176-9d3a-736776801475.jpeg',
+  apple: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=300&fit=crop',
+  honey: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=300&fit=crop',
+  vegetables: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
+  tea: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&h=300&fit=crop',
+  eggs: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop',
 };
 
 const allProducts = [

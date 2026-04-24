@@ -10,17 +10,17 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// 短剧封面图片
+// 短剧封面图片 - 使用公开可访问的图片
 const dramaCovers = {
-  folk: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_259bd5c3-4bef-4406-a258-d5b81f0facd8.jpeg',
-  ceo: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_2e25884b-578f-4054-aa4a-0db6cc6d0145.jpeg',
-  live: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_d6ae9249-4fb7-4937-ab53-c745efbad851.jpeg',
-  rebirth: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_ee551e00-61e5-498b-b65b-64477f0d9543.jpeg',
-  apocalypse: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_10873636-465c-462f-8edd-2e77bdcc1108.jpeg',
-  timetravel: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_86e31c49-f5d5-4c54-b4e4-ae867a3c4d3b.jpeg',
-  rich: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_51da36f2-785b-49de-9896-00a1cba0e59e.jpeg',
-  palace: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1f7bc6cd-743b-4dee-ab0c-195571f98425.jpeg',
-  fantasy: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e9dcfffa-c2c0-434f-b51f-41379374c21c.jpeg',
+  folk: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
+  ceo: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+  live: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
+  rebirth: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop',
+  apocalypse: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop',
+  timetravel: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=300&fit=crop',
+  rich: 'https://images.unsplash.com/photo-1510797215324-95aa89f43c33?w=400&h=300&fit=crop',
+  palace: 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop',
+  fantasy: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop',
 };
 
 const allDramas = [
