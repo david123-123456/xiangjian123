@@ -1,8 +1,16 @@
 import { Navbar } from '@/components/layout/Navbar';
 import Link from 'next/link';
-import { Video, ShoppingBag, ArrowRight, Sparkles, TrendingUp, Users, Plus, Play } from 'lucide-react';
+import { Video, ShoppingBag, ArrowRight, Sparkles, TrendingUp, Users, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+// 短剧封面图片
+const dramaCovers = {
+  folk: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_259bd5c3-4bef-4406-a258-d5b81f0facd8.jpeg',
+  ceo: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_2e25884b-578f-4054-aa4a-0db6cc6d0145.jpeg',
+  live: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_d6ae9249-4fb7-4937-ab53-c745efbad851.jpeg',
+  creation: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_688d376b-db6d-4a02-bf0b-203b5ecb0476.jpeg',
+};
 
 const stats = [
   { label: '已创作短剧', value: '12', icon: Video },
@@ -12,9 +20,10 @@ const stats = [
 ];
 
 const recentDramas = [
-  { id: '1', title: '柚子飘香的秘密', views: '12.5万', status: '已发布', createdAt: '2024-01-15' },
-  { id: '2', title: '霸总的乡村奇遇', views: '8.3万', status: '已发布', createdAt: '2024-01-12' },
-  { id: '3', title: '重生之我在农村卖苹果', views: '15.7万', status: '已发布', createdAt: '2024-01-10' },
+  { id: '1', title: '柚子飘香的秘密', views: '12.5万', status: '已发布', createdAt: '2024-01-15', cover: dramaCovers.folk },
+  { id: '2', title: '霸总的乡村奇遇', views: '8.3万', status: '已发布', createdAt: '2024-01-12', cover: dramaCovers.ceo },
+  { id: '3', title: '重生之我在农村卖苹果', views: '15.7万', status: '已发布', createdAt: '2024-01-10', cover: dramaCovers.live },
+  { id: '4', title: '农户创作中', views: '0', status: '创作中', createdAt: '2024-01-18', cover: dramaCovers.creation },
 ];
 
 const quickActions = [
@@ -121,8 +130,17 @@ export default function FarmerHomePage() {
               {recentDramas.map((drama) => (
                 <div key={drama.id} className="flex items-center justify-between p-4 hover:bg-[#8bc34a]/5">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-12 rounded bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 flex items-center justify-center">
-                      <Play className="w-6 h-6 text-[#4a7c23]" />
+                    <div className="w-20 h-14 rounded overflow-hidden relative">
+                      <img 
+                        src={drama.cover} 
+                        alt={drama.title}
+                        className="w-full h-full object-cover"
+                      />
+                      {drama.status === '创作中' && (
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        </div>
+                      )}
                     </div>
                     <div>
                       <h4 className="font-medium text-[#2d5016]">{drama.title}</h4>
@@ -131,7 +149,11 @@ export default function FarmerHomePage() {
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="text-sm text-[#4a7c23]">{drama.views}观看</span>
-                    <span className="px-2 py-1 rounded-full bg-[#8bc34a]/20 text-[#2d5016] text-xs">
+                    <span className={`px-2 py-1 rounded-full text-xs ${
+                      drama.status === '已发布' 
+                        ? 'bg-[#8bc34a]/20 text-[#2d5016]' 
+                        : 'bg-yellow-100 text-yellow-700'
+                    }`}>
                       {drama.status}
                     </span>
                   </div>

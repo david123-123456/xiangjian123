@@ -5,6 +5,28 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+// 短剧封面图片
+const dramaCovers = {
+  folk: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_259bd5c3-4bef-4406-a258-d5b81f0facd8.jpeg',
+  ceo: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_2e25884b-578f-4054-aa4a-0db6cc6d0145.jpeg',
+  live: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_d6ae9249-4fb7-4937-ab53-c745efbad851.jpeg',
+  rebirth: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_ee551e00-61e5-498b-b65b-64477f0d9543.jpeg',
+  apocalypse: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_10873636-465c-462f-8edd-2e77bdcc1108.jpeg',
+  timetravel: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_86e31c49-f5d5-4c54-b4e4-ae867a3c4d3b.jpeg',
+  rich: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_51da36f2-785b-49de-9896-00a1cba0e59e.jpeg',
+  palace: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1f7bc6cd-743b-4dee-ab0c-195571f98425.jpeg',
+  fantasy: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e9dcfffa-c2c0-434f-b51f-41379374c21c.jpeg',
+};
+
+// 农产品封面图片
+const productCovers = {
+  apple: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_275cd96f-c3ed-441f-a8ad-7331cd069caf.jpeg',
+  honey: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_6b135382-9e83-4ef8-8f2f-7a9a32c735e6.jpeg',
+  vegetables: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_c85a8acf-936d-4e44-9bf4-6cfdaa47de0f.jpeg',
+  tea: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_0823672b-1d42-4a03-bc54-5fcb0d3fdda8.jpeg',
+  eggs: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_b070fb9c-26c3-4176-9d3a-736776801475.jpeg',
+};
+
 const featuredDramas = [
   {
     id: '1',
@@ -13,7 +35,7 @@ const featuredDramas = [
     author: '刘家柚园',
     views: '12.5万',
     likes: 8900,
-    cover: '/api/placeholder/400/300',
+    cover: dramaCovers.folk,
     description: '讲述柚农老刘一家与柚子的感人故事',
   },
   {
@@ -23,7 +45,7 @@ const featuredDramas = [
     author: '王大姐特产店',
     views: '8.3万',
     likes: 5600,
-    cover: '/api/placeholder/400/300',
+    cover: dramaCovers.ceo,
     description: '都市霸总误入乡村，邂逅质朴爱情',
   },
   {
@@ -33,8 +55,28 @@ const featuredDramas = [
     author: '红富士农场',
     views: '15.7万',
     likes: 12000,
-    cover: '/api/placeholder/400/300',
+    cover: dramaCovers.live,
     description: '女主重生回到农村，用苹果致富的励志故事',
+  },
+  {
+    id: '4',
+    title: '末世农场的希望',
+    category: '末世',
+    author: '希望农场',
+    views: '6.2万',
+    likes: 4200,
+    cover: dramaCovers.apocalypse,
+    description: '末世幸存者在农村重建家园的感人故事',
+  },
+  {
+    id: '5',
+    title: '穿越古代当农民',
+    category: '穿越',
+    author: '古村驿站',
+    views: '9.8万',
+    likes: 7800,
+    cover: dramaCovers.timetravel,
+    description: '现代人穿越到古代农村，用智慧改变命运',
   },
 ];
 
@@ -45,7 +87,7 @@ const hotProducts = [
     price: 39.9,
     originalPrice: 59.9,
     sales: 2580,
-    image: '/api/placeholder/200/200',
+    image: productCovers.apple,
     farm: '红富士农场',
   },
   {
@@ -54,7 +96,7 @@ const hotProducts = [
     price: 68.0,
     originalPrice: 98.0,
     sales: 1860,
-    image: '/api/placeholder/200/200',
+    image: productCovers.honey,
     farm: '深山蜂场',
   },
   {
@@ -63,8 +105,26 @@ const hotProducts = [
     price: 28.8,
     originalPrice: 38.8,
     sales: 3200,
-    image: '/api/placeholder/200/200',
+    image: productCovers.vegetables,
     farm: '绿色田园',
+  },
+  {
+    id: '4',
+    name: '武夷山农家茶叶',
+    price: 88.0,
+    originalPrice: 128.0,
+    sales: 1450,
+    image: productCovers.tea,
+    farm: '云雾茶园',
+  },
+  {
+    id: '5',
+    name: '正宗土鸡蛋',
+    price: 45.0,
+    originalPrice: 58.0,
+    sales: 2100,
+    image: productCovers.eggs,
+    farm: '乡村鸡舍',
   },
 ];
 
@@ -127,10 +187,12 @@ export default function ConsumerHomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {featuredDramas.map((drama) => (
             <Card key={drama.id} className="rural-card-hover overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Video className="w-16 h-16 text-[#4a7c23]/40" />
-                </div>
+              <div className="aspect-video relative overflow-hidden">
+                <img 
+                  src={drama.cover} 
+                  alt={drama.title}
+                  className="w-full h-full object-cover"
+                />
                 <Badge className="absolute top-2 left-2 bg-[#2d5016]">{drama.category}</Badge>
               </div>
               <CardHeader className="pb-2">
@@ -175,10 +237,12 @@ export default function ConsumerHomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {hotProducts.map((product) => (
             <Card key={product.id} className="rural-card-hover overflow-hidden">
-              <div className="aspect-square bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <ShoppingBag className="w-16 h-16 text-[#4a7c23]/40" />
-                </div>
+              <div className="aspect-square relative overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
                 <Badge className="absolute top-2 right-2 bg-red-500">热卖</Badge>
               </div>
               <CardContent className="pt-4">

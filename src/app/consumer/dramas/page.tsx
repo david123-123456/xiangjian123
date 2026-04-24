@@ -10,6 +10,19 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+// 短剧封面图片
+const dramaCovers = {
+  folk: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_259bd5c3-4bef-4406-a258-d5b81f0facd8.jpeg',
+  ceo: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_2e25884b-578f-4054-aa4a-0db6cc6d0145.jpeg',
+  live: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_d6ae9249-4fb7-4937-ab53-c745efbad851.jpeg',
+  rebirth: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_ee551e00-61e5-498b-b65b-64477f0d9543.jpeg',
+  apocalypse: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_10873636-465c-462f-8edd-2e77bdcc1108.jpeg',
+  timetravel: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_86e31c49-f5d5-4c54-b4e4-ae867a3c4d3b.jpeg',
+  rich: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_51da36f2-785b-49de-9896-00a1cba0e59e.jpeg',
+  palace: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1f7bc6cd-743b-4dee-ab0c-195571f98425.jpeg',
+  fantasy: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_e9dcfffa-c2c0-434f-b51f-41379374c21c.jpeg',
+};
+
 const allDramas = [
   {
     id: '1',
@@ -19,6 +32,7 @@ const allDramas = [
     author: '刘家柚园',
     views: '12.5万',
     likes: 8900,
+    cover: dramaCovers.folk,
     description: '讲述柚农老刘一家与柚子的感人故事，展现乡村生活的美好与艰辛。',
     tags: ['乡村', '家庭', '励志'],
   },
@@ -30,6 +44,7 @@ const allDramas = [
     author: '王大姐特产店',
     views: '8.3万',
     likes: 5600,
+    cover: dramaCovers.ceo,
     description: '都市霸总误入乡村，邂逅质朴爱情，在田园中找回初心。',
     tags: ['霸总', '爱情', '乡村'],
   },
@@ -41,6 +56,7 @@ const allDramas = [
     author: '红富士农场',
     views: '15.7万',
     likes: 12000,
+    cover: dramaCovers.live,
     description: '女主重生回到农村，用智慧和汗水种植优质苹果，带领乡亲致富。',
     tags: ['重生', '创业', '带货'],
   },
@@ -52,6 +68,7 @@ const allDramas = [
     author: '云锦阁',
     views: '6.2万',
     likes: 4200,
+    cover: dramaCovers.palace,
     description: '记录古镇非遗传承人的故事，展现传统手工艺的魅力。',
     tags: ['非遗', '文化', '传承'],
   },
@@ -63,6 +80,7 @@ const allDramas = [
     author: '科技农场',
     views: '9.8万',
     likes: 7800,
+    cover: dramaCovers.apocalypse,
     description: '末世背景下，一群人靠智慧农业重建家园的希望故事。',
     tags: ['末世', '科幻', '农业'],
   },
@@ -74,8 +92,45 @@ const allDramas = [
     author: '茶山人家',
     views: '11.2万',
     likes: 9500,
+    cover: dramaCovers.timetravel,
     description: '现代茶艺师穿越到古代，与茶农一起书写茶文化传奇。',
     tags: ['穿越', '茶文化', '历史'],
+  },
+  {
+    id: '7',
+    title: '豪门千金在农村',
+    category: '故事版',
+    genre: '豪门',
+    author: '田园梦工厂',
+    views: '7.5万',
+    likes: 6100,
+    cover: dramaCovers.rich,
+    description: '豪门千金隐瞒身份来到农村，经历了从娇娇女到励志女孩的蜕变。',
+    tags: ['豪门', '逆袭', '爱情'],
+  },
+  {
+    id: '8',
+    title: '仙侠农场的奇妙冒险',
+    category: '故事版',
+    genre: '仙侠',
+    author: '云雾山庄',
+    views: '8.9万',
+    likes: 7200,
+    cover: dramaCovers.fantasy,
+    description: '修仙者下山历练，在农村用仙法帮助村民致富的奇妙故事。',
+    tags: ['仙侠', '奇幻', '农业'],
+  },
+  {
+    id: '9',
+    title: '重生之我是村长',
+    category: '带货版',
+    genre: '重生',
+    author: '振兴乡村',
+    views: '13.4万',
+    likes: 11000,
+    cover: dramaCovers.rebirth,
+    description: '重生者回到过去成为村长，带领全村发展特色农业。',
+    tags: ['重生', '村长', '致富'],
   },
 ];
 
@@ -164,10 +219,15 @@ export default function ConsumerDramasPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDramas.map((drama) => (
             <Card key={drama.id} className="rural-card-hover overflow-hidden">
-              <div className="aspect-video bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative cursor-pointer group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#2d5016]/80 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-white ml-1" />
+              <div className="aspect-video relative cursor-pointer group overflow-hidden">
+                <img 
+                  src={drama.cover} 
+                  alt={drama.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+                    <Play className="w-8 h-8 text-[#2d5016] ml-1" />
                   </div>
                 </div>
                 <Badge className="absolute top-2 left-2 bg-[#2d5016]">{drama.category}</Badge>

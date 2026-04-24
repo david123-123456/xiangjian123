@@ -9,6 +9,15 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+// 农产品封面图片
+const productCovers = {
+  apple: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_275cd96f-c3ed-441f-a8ad-7331cd069caf.jpeg',
+  honey: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_6b135382-9e83-4ef8-8f2f-7a9a32c735e6.jpeg',
+  vegetables: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_c85a8acf-936d-4e44-9bf4-6cfdaa47de0f.jpeg',
+  tea: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_0823672b-1d42-4a03-bc54-5fcb0d3fdda8.jpeg',
+  eggs: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_b070fb9c-26c3-4176-9d3a-736776801475.jpeg',
+};
+
 const allProducts = [
   {
     id: '1',
@@ -17,7 +26,7 @@ const allProducts = [
     originalPrice: 59.9,
     sales: 2580,
     rating: 4.9,
-    image: '',
+    image: productCovers.apple,
     farm: '红富士农场',
     location: '山东烟台',
     tags: ['水果', '有机'],
@@ -30,7 +39,7 @@ const allProducts = [
     originalPrice: 98.0,
     sales: 1860,
     rating: 4.8,
-    image: '',
+    image: productCovers.honey,
     farm: '深山蜂场',
     location: '云南大理',
     tags: ['蜂蜜', '天然'],
@@ -43,7 +52,7 @@ const allProducts = [
     originalPrice: 38.8,
     sales: 3200,
     rating: 4.7,
-    image: '',
+    image: productCovers.vegetables,
     farm: '绿色田园',
     location: '河南开封',
     tags: ['蔬菜', '有机'],
@@ -56,7 +65,7 @@ const allProducts = [
     originalPrice: 268.0,
     sales: 980,
     rating: 5.0,
-    image: '',
+    image: productCovers.tea,
     farm: '岩茶世家',
     location: '福建武夷山',
     tags: ['茶叶', '名茶'],
@@ -69,7 +78,7 @@ const allProducts = [
     originalPrice: 65.0,
     sales: 1450,
     rating: 4.6,
-    image: '',
+    image: productCovers.vegetables,
     farm: '秦岭山珍',
     location: '陕西西安',
     tags: ['菌类', '野生'],
@@ -79,14 +88,53 @@ const allProducts = [
     id: '6',
     name: '东北五常大米',
     price: 78.0,
-    originalPrice: 108.0,
-    sales: 4200,
+    originalPrice: 98.0,
+    sales: 2100,
     rating: 4.9,
-    image: '',
-    farm: '黑土地粮仓',
+    image: productCovers.vegetables,
+    farm: '五常稻香',
     location: '黑龙江五常',
-    tags: ['粮油', '优质'],
-    description: '稻花香品种，香糯可口',
+    tags: ['粮食', '优质'],
+    description: '正宗五常大米，香糯可口',
+  },
+  {
+    id: '7',
+    name: '正宗土鸡蛋',
+    price: 45.0,
+    originalPrice: 58.0,
+    sales: 3200,
+    rating: 4.8,
+    image: productCovers.eggs,
+    farm: '乡村鸡舍',
+    location: '安徽黄山',
+    tags: ['禽蛋', '天然'],
+    description: '散养土鸡，蛋黄橙红，营养丰富',
+  },
+  {
+    id: '8',
+    name: '阳澄湖大闸蟹',
+    price: 288.0,
+    originalPrice: 388.0,
+    sales: 890,
+    rating: 5.0,
+    image: productCovers.vegetables,
+    farm: '阳澄蟹庄',
+    location: '江苏苏州',
+    tags: ['水产', '鲜活'],
+    description: '正宗阳澄湖大闸蟹，膏满黄肥',
+  },
+  {
+    id: '9',
+    name: '农家腊肉',
+    price: 58.0,
+    originalPrice: 78.0,
+    sales: 1680,
+    rating: 4.7,
+    image: productCovers.vegetables,
+    farm: '湘味坊',
+    location: '湖南湘西',
+    tags: ['肉类', '传统'],
+    description: '传统工艺腌制，柴火熏制，香味浓郁',
   },
 ];
 
@@ -157,10 +205,12 @@ export default function ConsumerShopPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
             <Card key={product.id} className="rural-card-hover overflow-hidden">
-              <div className="aspect-square bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <ShoppingBag className="w-20 h-20 text-[#4a7c23]/40" />
-                </div>
+              <div className="aspect-square relative overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
                 <Badge className="absolute top-2 right-2 bg-red-500">-{Math.round((1 - product.price / product.originalPrice) * 100)}%</Badge>
                 <Button
                   variant="ghost"
