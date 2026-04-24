@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-// 短剧封面图片 - 根据类型显示对应封面
+// 短剧封面图片 - 乡村助农短剧风格
 const dramaCovers: Record<string, string> = {
   '霸总': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
   '重生': 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=300&fit=crop',
@@ -14,8 +14,6 @@ const dramaCovers: Record<string, string> = {
   '豪门': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop',
   '宫斗': 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop',
   '仙侠': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop',
-  '乡村': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
-  '传统文化': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop',
   '带货': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
   '创业': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop',
   '非遗': 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop',
@@ -37,21 +35,50 @@ const getDramaCover = (category: string): string => {
 // 农产品封面图片 - 根据产品名称自动匹配
 const productCoverImages: Record<string, string> = {
   apple: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=300&fit=crop',
+  tomato: 'https://images.unsplash.com/photo-1546470427-227c7b3f8310?w=400&h=300&fit=crop',
   honey: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=300&fit=crop',
   vegetables: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
   tea: 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&h=300&fit=crop',
   eggs: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400&h=300&fit=crop',
+  shrimp: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=300&fit=crop',
+  chicken: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=400&h=300&fit=crop',
+  strawberry: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=300&fit=crop',
+  mushroom: 'https://images.unsplash.com/photo-1504545102780-26774c1bb073?w=400&h=300&fit=crop',
+  corn: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop',
+  grape: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&h=300&fit=crop',
+  peanut: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=300&fit=crop',
+  ginger: 'https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&h=300&fit=crop',
+  garlic: 'https://images.unsplash.com/photo-1543076659-9380cdf10613?w=400&h=300&fit=crop',
+  carrot: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=300&fit=crop',
+  pork: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&h=300&fit=crop',
+  duck: 'https://images.unsplash.com/photo-1588554182644-f82e27f4d6da?w=400&h=300&fit=crop',
+  rice: 'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=400&h=300&fit=crop',
   default: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=300&fit=crop',
 };
 
 // 根据产品名称返回对应的封面图片
 function getProductCover(productName: string): string {
   const name = productName.toLowerCase();
-  if (name.includes('苹果') || name.includes('富士')) return productCoverImages.apple;
-  if (name.includes('蜂蜜') || name.includes('蜂')) return productCoverImages.honey;
-  if (name.includes('蔬菜') || name.includes('青菜') || name.includes('白菜') || name.includes('红薯') || name.includes('薯')) return productCoverImages.vegetables;
-  if (name.includes('茶') || name.includes('大红袍') || name.includes('龙井')) return productCoverImages.tea;
-  if (name.includes('鸡蛋') || name.includes('土蛋') || name.includes('蛋')) return productCoverImages.eggs;
+  if (name.includes('苹果') || name.includes('富士') || name.includes('apple')) return productCoverImages.apple;
+  if (name.includes('番茄') || name.includes('西红柿') || name.includes('tomato')) return productCoverImages.tomato;
+  if (name.includes('蜂蜜') || name.includes('honey')) return productCoverImages.honey;
+  if (name.includes('蔬菜') || name.includes('青菜') || name.includes('白菜') || name.includes('vegetable')) return productCoverImages.vegetables;
+  if (name.includes('茶') || name.includes('大红袍') || name.includes('龙井') || name.includes('tea')) return productCoverImages.tea;
+  if (name.includes('鸡蛋') || name.includes('土蛋') || name.includes('蛋') || name.includes('egg')) return productCoverImages.eggs;
+  if (name.includes('虾') || name.includes('对虾') || name.includes('明虾') || name.includes('shrimp')) return productCoverImages.shrimp;
+  if (name.includes('鸡') || name.includes('土鸡') || name.includes('母鸡') || name.includes('chicken')) return productCoverImages.chicken;
+  if (name.includes('草莓') || name.includes('莓') || name.includes('strawberry')) return productCoverImages.strawberry;
+  if (name.includes('蘑菇') || name.includes('菌') || name.includes('香菇') || name.includes('mushroom')) return productCoverImages.mushroom;
+  if (name.includes('玉米') || name.includes('苞谷') || name.includes('corn')) return productCoverImages.corn;
+  if (name.includes('葡萄') || name.includes('grape')) return productCoverImages.grape;
+  if (name.includes('花生') || name.includes('peanut')) return productCoverImages.peanut;
+  if (name.includes('生姜') || name.includes('姜') || name.includes('ginger')) return productCoverImages.ginger;
+  if (name.includes('大蒜') || name.includes('蒜') || name.includes('garlic')) return productCoverImages.garlic;
+  if (name.includes('胡萝卜') || name.includes('萝卜') || name.includes('carrot')) return productCoverImages.carrot;
+  if (name.includes('猪肉') || name.includes('肉') || name.includes('pork')) return productCoverImages.pork;
+  if (name.includes('鸭') || name.includes('鹅') || name.includes('duck')) return productCoverImages.duck;
+  if (name.includes('大米') || name.includes('稻') || name.includes('米') || name.includes('rice')) return productCoverImages.rice;
+  if (name.includes('红薯') || name.includes('薯') || name.includes('地瓜')) return productCoverImages.vegetables;
   return productCoverImages.default;
 }
 

@@ -10,32 +10,31 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// 短剧封面图片 - 根据类型显示对应封面
+// 短剧封面图片 - 乡村助农短剧风格
 const dramaCovers: Record<string, string> = {
-  // 故事版类型
-  '霸总': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop', // 都市帅气男性
-  '重生': 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=300&fit=crop', // 女性特写
-  '末世': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop', // 黑暗废墟
-  '穿越': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=300&fit=crop', // 古风女子
-  '豪门': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop', // 豪华场景
-  '宫斗': 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop', // 宫廷风格
-  '仙侠': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop', // 仙山云雾
-  '乡村': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop', // 田园风光
-  '传统文化': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop', // 传统文化
+  // 故事版类型 - 乡村励志风格
+  '霸总': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
+  '重生': 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=300&fit=crop',
+  '末世': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop',
+  '穿越': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=300&fit=crop',
+  '豪门': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop',
+  '宫斗': 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop',
+  '仙侠': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop',
   // 带货版类型
-  '带货': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop', // 直播带货
-  '创业': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop', // 创业奋斗
-  // 民俗版类型
-  '非遗': 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop', // 手工艺
-  '文化': 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop', // 民俗文化
-  '传承': 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=300&fit=crop', // 传承
+  '带货': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
+  '创业': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop',
+  // 民俗版类型 - 乡村文化
+  '非遗': 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop',
+  '文化': 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop',
+  '传承': 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=300&fit=crop',
   // 其他
-  '爱情': 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=300&fit=crop', // 浪漫爱情
-  '科幻': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop', // 科幻
-  '悬疑': 'https://images.unsplash.com/photo-1509248961895-40216a3149f8?w=400&h=300&fit=crop', // 悬疑
-  '搞笑': 'https://images.unsplash.com/photo-1543592939-a4e0c0f5ddcc?w=400&h=300&fit=crop', // 搞笑
-  '励志': 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop', // 励志
-  'default': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop', // 默认田园
+  '爱情': 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=300&fit=crop',
+  '科幻': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop',
+  '悬疑': 'https://images.unsplash.com/photo-1509248961895-40216a3149f8?w=400&h=300&fit=crop',
+  '搞笑': 'https://images.unsplash.com/photo-1543592939-a4e0c0f5ddcc?w=400&h=300&fit=crop',
+  '励志': 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop',
+  // 默认 - 乡村田园
+  'default': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
 };
 
 // 根据类型获取封面图片
