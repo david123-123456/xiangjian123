@@ -11,20 +11,45 @@ import {
   Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger
 } from '@/components/ui/dialog';
 
-// 农产品封面映射
+// 农产品封面映射 - 每个产品类型都有独立封面
 const productCoverMap: Record<string, string> = {
   '苹果': 'https://images.unsplash.com/photo-1570913149827-d2ac84ab3f9a?w=400&h=400&fit=crop',
   '番茄': 'https://images.unsplash.com/photo-1546470427-227c7b3f8310?w=400&h=400&fit=crop',
+  '西红柿': 'https://images.unsplash.com/photo-1546470427-227c7b3f8310?w=400&h=400&fit=crop',
   '蜂蜜': 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop',
+  '蜂': 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop',
   '鸡蛋': 'https://images.unsplash.com/photo-1569288052389-dac9b01c9c05?w=400&h=400&fit=crop',
+  '土蛋': 'https://images.unsplash.com/photo-1569288052389-dac9b01c9c05?w=400&h=400&fit=crop',
   '茶叶': 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&h=400&fit=crop',
+  '茶': 'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&h=400&fit=crop',
   '蔬菜': 'https://images.unsplash.com/photo-1518843875459-f738682238a6?w=400&h=400&fit=crop',
+  '青菜': 'https://images.unsplash.com/photo-1518843875459-f738682238a6?w=400&h=400&fit=crop',
+  '白菜': 'https://images.unsplash.com/photo-1518843875459-f738682238a6?w=400&h=400&fit=crop',
+  '红薯': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop',
+  '玉米': 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=400&fit=crop',
+  '土豆': 'https://images.unsplash.com/photo-1518977676601-b53f82ber377?w=400&h=400&fit=crop',
+  '蘑菇': 'https://images.unsplash.com/photo-1504545102780-26774c1bb073?w=400&h=400&fit=crop',
+  '香菇': 'https://images.unsplash.com/photo-1504545102780-26774c1bb073?w=400&h=400&fit=crop',
+  '葡萄': 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400&h=400&fit=crop',
+  '草莓': 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=400&fit=crop',
+  '花生': 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=400&fit=crop',
+  '生姜': 'https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&h=400&fit=crop',
+  '姜': 'https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&h=400&fit=crop',
+  '大蒜': 'https://images.unsplash.com/photo-1543076659-9380cdf10613?w=400&h=400&fit=crop',
+  '蒜': 'https://images.unsplash.com/photo-1543076659-9380cdf10613?w=400&h=400&fit=crop',
+  '胡萝卜': 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=400&fit=crop',
+  '萝卜': 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=400&fit=crop',
+  '猪肉': 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&h=400&fit=crop',
+  '肉': 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&h=400&fit=crop',
+  '鸭': 'https://images.unsplash.com/photo-1588554182644-f82e27f4d6da?w=400&h=400&fit=crop',
+  '鹅': 'https://images.unsplash.com/photo-1588554182644-f82e27f4d6da?w=400&h=400&fit=crop',
   'default': 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&h=400&fit=crop',
 };
 
 const getProductCover = (name: string): string => {
+  const upperName = name.toUpperCase();
   for (const [keyword, url] of Object.entries(productCoverMap)) {
-    if (keyword !== 'default' && name.includes(keyword)) {
+    if (keyword !== 'default' && upperName.includes(keyword.toUpperCase())) {
       return url;
     }
   }
