@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
 import {
   Video, Mic, MicOff, Upload, Play, Download, ArrowLeft, ArrowRight,
-  Sparkles, ShoppingBag, Building, Check, Loader2
+  Sparkles, ShoppingBag, Building, Check, Loader2, AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -48,6 +48,8 @@ export default function FarmerCreatePage() {
   const [step, setStep] = useState(1);
   const [isRecording, setIsRecording] = useState(false);
   const [recordedText, setRecordedText] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [loadingMessage, setLoadingMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [isGeneratingVideo, setIsGeneratingVideo] = useState(false);
   const [generatedScript, setGeneratedScript] = useState<GeneratedScript | null>(null);
@@ -134,7 +136,11 @@ export default function FarmerCreatePage() {
 
   const generateScript = async () => {
     setIsGenerating(true);
+    setError(null);
+    setLoadingMessage('正在连接AI服务...');
+    
     try {
+      setLoadingMessage('正在生成剧本，请稍候...');
       const response = await fetch('/api/script', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -149,12 +155,22 @@ export default function FarmerCreatePage() {
       });
       
       const data = await response.json();
-      if (data.success) {
+      
+      if (!response.ok) {
+        throw new Error(data.error || '生成剧本失败，请重试');
+      }
+      
+      if (data.success && data.script) {
         setGeneratedScript(data.script);
         setStep(3);
+        setLoadingMessage('');
+      } else {
+        throw new Error(data.error || '剧本生成失败，请重试');
       }
-    } catch (error) {
-      console.error('Failed to generate script:', error);
+    } catch (err) {
+      console.error('Failed to generate script:', err);
+      setError(err instanceof Error ? err.message : '生成剧本时发生错误，请检查网络连接后重试');
+      setLoadingMessage('');
     } finally {
       setIsGenerating(false);
     }
@@ -433,12 +449,12 @@ export default function FarmerCreatePage() {
               <Button
                 onClick={generateScript}
                 disabled={isGenerating || (!formData.customPrompt && !recordedText)}
-                className="bg-[#2d5016] hover:bg-[#4a7c23] gap-2"
+                className="bg-[#2d5016] hover:bg-[#4a7c23] gap-2 min-w-[160px]"
               >
                 {isGenerating ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    正在生成剧本...
+                    生成中...
                   </>
                 ) : (
                   <>
@@ -448,6 +464,30 @@ export default function FarmerCreatePage() {
                 )}
               </Button>
             </div>
+
+            {/* Loading Message */}
+            {isGenerating && loadingMessage && (
+              <div className="mt-4 text-center">
+                <p className="text-sm text-[#4a7c23] animate-pulse">{loadingMessage}</p>
+                <p className="text-xs text-[#4a7c23]/60 mt-1">首次生成可能需要10-30秒，请耐心等待</p>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {error && (
+              <Alert className="mt-4 bg-red-50 border-red-200">
+                <AlertCircle className="w-4 h-4 text-red-600" />
+                <AlertDescription className="text-red-700">
+                  {error}
+                  <button 
+                    onClick={() => setError(null)}
+                    className="ml-2 underline hover:no-underline"
+                  >
+                    关闭
+                  </button>
+                </AlertDescription>
+              </Alert>
+            )}
           </div>
         </section>
       )}
