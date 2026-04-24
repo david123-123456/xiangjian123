@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乡见 - 助农平台</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%); }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .text-shadow { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    nav a:hover { border-bottom: 2px solid white; }
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- 导航栏 -->
+  <nav class="gradient-bg text-white py-4 px-6 shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl">🌾</span>
+        <span class="text-xl font-bold text-shadow">乡见</span>
+      </div>
+      <div class="flex space-x-6">
+        <a href="#" onclick="showPage('home')" class="hover:border-b-2 border-white pb-1 transition">首页</a>
+        <a href="#" onclick="showPage('consumer')" class="hover:border-b-2 border-white pb-1 transition">消费者端</a>
+        <a href="#" onclick="showPage('farmer')" class="hover:border-b-2 border-white pb-1 transition">农户端</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 首页 -->
+  <div id="home" class="page active">
+    <!-- Hero -->
+    <section class="gradient-bg text-white py-20 px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl font-bold mb-6 text-shadow">乡见 - 助农平台</h1>
+        <p class="text-xl mb-8 opacity-90">连接乡村与城市，让农产品走进千家万户</p>
+        <div class="flex justify-center space-x-4">
+          <button onclick="showPage('consumer')" class="bg-white text-green-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">
+            进入消费者端
+          </button>
+          <button onclick="showPage('farmer')" class="border-2 border-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-green-600 transition">
+            进入农户端
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 功能介绍 -->
+    <section class="py-16 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">平台特色</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-2xl shadow-lg card-hover transition">
+            <div class="text-5xl mb-4">🎬</div>
+            <h3 class="text-xl font-bold mb-3 text-green-600">短剧营销</h3>
+            <p class="text-gray-600">农户可生成助农短剧，展示乡村故事和产品，提升农产品曝光度</p>
+          </div>
+          <div class="bg-white p-8 rounded-2xl shadow-lg card-hover transition">
+            <div class="text-5xl mb-4">🛒</div>
+            <h3 class="text-xl font-bold mb-3 text-green-600">农产品直销</h3>
+            <p class="text-gray-600">消费者可直接购买来自田间地头的新鲜农产品，品质有保障</p>
+          </div>
+          <div class="bg-white p-8 rounded-2xl shadow-lg card-hover transition">
+            <div class="text-5xl mb-4">🤝</div>
+            <h3 class="text-xl font-bold mb-3 text-green-600">助农增收</h3>
+            <p class="text-gray-600">帮助农户拓展销路，增加收入，推动乡村经济发展</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 消费者端 -->
+  <div id="consumer" class="page">
+    <div class="gradient-bg text-white py-12 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">消费者端</h1>
+        <p class="opacity-90">浏览短剧，发现优质农产品</p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto py-8 px-6">
+      <!-- 热门短剧 -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <span class="text-red-500 mr-2">🔥</span> 热门短剧
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop" alt="霸总" class="w-full h-48 object-cover">
+            <div class="p-3">
+              <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">霸总</span>
+              <h3 class="font-bold mt-2 text-sm">乡村总裁</h3>
+              <p class="text-gray-500 text-xs mt-1">128.5万播放</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=400&fit=crop" alt="重生" class="w-full h-48 object-cover">
+            <div class="p-3">
+              <span class="bg-purple-500 text-white text-xs px-2 py-1 rounded">重生</span>
+              <h3 class="font-bold mt-2 text-sm">重生之我在农村</h3>
+              <p class="text-gray-500 text-xs mt-1">96.2万播放</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&h=400&fit=crop" alt="末世" class="w-full h-48 object-cover">
+            <div class="p-3">
+              <span class="bg-gray-700 text-white text-xs px-2 py-1 rounded">末世</span>
+              <h3 class="font-bold mt-2 text-sm">末世农庄</h3>
+              <p class="text-gray-500 text-xs mt-1">88.7万播放</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=300&h=400&fit=crop" alt="穿越" class="w-full h-48 object-cover">
+            <div class="p-3">
+              <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded">穿越</span>
+              <h3 class="font-bold mt-2 text-sm">穿越乡村记</h3>
+              <p class="text-gray-500 text-xs mt-1">75.3万播放</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=300&h=400&fit=crop" alt="乡村" class="w-full h-48 object-cover">
+            <div class="p-3">
+              <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">乡村</span>
+              <h3 class="font-bold mt-2 text-sm">田园牧歌</h3>
+              <p class="text-gray-500 text-xs mt-1">65.8万播放</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 热卖农产品 -->
+      <section>
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <span class="text-orange-500 mr-2">🛒</span> 热卖农产品
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300&h=250&fit=crop" alt="苹果" class="w-full h-36 object-cover">
+            <div class="p-3">
+              <h3 class="font-bold text-sm">红富士苹果</h3>
+              <p class="text-red-500 font-bold mt-1">¥38.8 <span class="text-gray-400 text-xs line-through">¥58</span></p>
+              <p class="text-gray-500 text-xs mt-1">已售 2.3万</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=300&h=250&fit=crop" alt="蜂蜜" class="w-full h-36 object-cover">
+            <div class="p-3">
+              <h3 class="font-bold text-sm">农家土蜂蜜</h3>
+              <p class="text-red-500 font-bold mt-1">¥68 <span class="text-gray-400 text-xs line-through">¥98</span></p>
+              <p class="text-gray-500 text-xs mt-1">已售 1.8万</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=250&fit=crop" alt="蔬菜" class="w-full h-36 object-cover">
+            <div class="p-3">
+              <h3 class="font-bold text-sm">有机蔬菜礼盒</h3>
+              <p class="text-red-500 font-bold mt-1">¥88 <span class="text-gray-400 text-xs line-through">¥128</span></p>
+              <p class="text-gray-500 text-xs mt-1">已售 1.5万</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=300&h=250&fit=crop" alt="茶叶" class="w-full h-36 object-cover">
+            <div class="p-3">
+              <h3 class="font-bold text-sm">武夷山岩茶</h3>
+              <p class="text-red-500 font-bold mt-1">¥168 <span class="text-gray-400 text-xs line-through">¥238</span></p>
+              <p class="text-gray-500 text-xs mt-1">已售 1.2万</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover transition cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1499643382410-42554a0afb09?w=300&h=250&fit=crop" alt="鸡蛋" class="w-full h-36 object-cover">
+            <div class="p-3">
+              <h3 class="font-bold text-sm">农家土鸡蛋</h3>
+              <p class="text-red-500 font-bold mt-1">¥45 <span class="text-gray-400 text-xs line-through">¥68</span></p>
+              <p class="text-gray-500 text-xs mt-1">已售 1.1万</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 农户端 -->
+  <div id="farmer" class="page">
+    <div class="gradient-bg text-white py-12 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">农户端</h1>
+        <p class="opacity-90">管理农产品，创建助农短剧</p>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto py-8 px-6">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- 快捷入口 -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+            <span class="text-green-500 mr-2">⚡</span> 快捷入口
+          </h2>
+          <div class="space-y-4">
+            <button class="w-full bg-green-50 border-2 border-green-500 text-green-700 px-6 py-4 rounded-xl font-bold hover:bg-green-500 hover:text-white transition flex items-center justify-center">
+              <span class="text-2xl mr-3">📹</span> 短剧创作中心
+            </button>
+            <button class="w-full bg-green-50 border-2 border-green-500 text-green-700 px-6 py-4 rounded-xl font-bold hover:bg-green-500 hover:text-white transition flex items-center justify-center">
+              <span class="text-2xl mr-3">📦</span> 我的商品
+            </button>
+            <button class="w-full bg-green-50 border-2 border-green-500 text-green-700 px-6 py-4 rounded-xl font-bold hover:bg-green-500 hover:text-white transition flex items-center justify-center">
+              <span class="text-2xl mr-3">📊</span> 数据中心
+            </button>
+          </div>
+        </div>
+
+        <!-- 最近创作 -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+            <span class="text-blue-500 mr-2">📹</span> 最近创作
+          </h2>
+          <div class="space-y-4">
+            <div class="flex items-center p-3 bg-gray-50 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="封面" class="w-16 h-16 rounded-lg object-cover">
+              <div class="ml-4 flex-1">
+                <h3 class="font-bold text-sm">乡村霸总第一集</h3>
+                <p class="text-gray-500 text-xs mt-1">故事版 · 霸总</p>
+              </div>
+              <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded">已完成</span>
+            </div>
+            <div class="flex items-center p-3 bg-gray-50 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=100&h=100&fit=crop" alt="封面" class="w-16 h-16 rounded-lg object-cover">
+              <div class="ml-4 flex-1">
+                <h3 class="font-bold text-sm">助农带货第一期</h3>
+                <p class="text-gray-500 text-xs mt-1">带货版</p>
+              </div>
+              <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">创作中</span>
+            </div>
+            <div class="flex items-center p-3 bg-gray-50 rounded-xl">
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=100&h=100&fit=crop" alt="封面" class="w-16 h-16 rounded-lg object-cover">
+              <div class="ml-4 flex-1">
+                <h3 class="font-bold text-sm">乡村文化纪录片</h3>
+                <p class="text-gray-500 text-xs mt-1">民俗版</p>
+              </div>
+              <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded">已完成</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 短剧模板介绍 -->
+      <div class="mt-8 bg-white rounded-2xl shadow-lg p-8">
+        <h2 class="text-xl font-bold text-gray-800 mb-6">短剧模板介绍</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center p-6 bg-red-50 rounded-xl">
+            <div class="text-4xl mb-3">🎬</div>
+            <h3 class="font-bold text-lg text-red-600 mb-2">故事版</h3>
+            <p class="text-gray-600 text-sm">爆款短剧风格，包含霸总、重生、末世、穿越等热门题材</p>
+          </div>
+          <div class="text-center p-6 bg-orange-50 rounded-xl">
+            <div class="text-4xl mb-3">🛒</div>
+            <h3 class="font-bold text-lg text-orange-600 mb-2">带货版</h3>
+            <p class="text-gray-600 text-sm">直播销售风格，展示农产品，吸引消费者购买</p>
+          </div>
+          <div class="text-center p-6 bg-green-50 rounded-xl">
+            <div class="text-4xl mb-3">🏘️</div>
+            <h3 class="font-bold text-lg text-green-600 mb-2">民俗版</h3>
+            <p class="text-gray-600 text-sm">展示村落文化故事，传承乡村传统，增强品牌故事性</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-800 text-white py-8 px-6 mt-12">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-lg font-bold mb-2">🌾 乡见</p>
+      <p class="text-gray-400 text-sm">连接乡村与城市，让农产品走进千家万户</p>
+      <p class="text-gray-500 text-xs mt-4">© 2024 乡见助农平台. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
