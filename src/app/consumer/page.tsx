@@ -5,17 +5,33 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-// 短剧封面图片 - 使用公开可访问的图片
-const dramaCovers = {
-  folk: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
-  ceo: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-  live: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
-  rebirth: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop',
-  apocalypse: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop',
-  timetravel: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=300&fit=crop',
-  rich: 'https://images.unsplash.com/photo-1510797215324-95aa89f43c33?w=400&h=300&fit=crop',
-  palace: 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop',
-  fantasy: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop',
+// 短剧封面图片 - 根据类型显示对应封面
+const dramaCovers: Record<string, string> = {
+  '霸总': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
+  '重生': 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=300&fit=crop',
+  '末世': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop',
+  '穿越': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=300&fit=crop',
+  '豪门': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop',
+  '宫斗': 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop',
+  '仙侠': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop',
+  '乡村': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
+  '传统文化': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop',
+  '带货': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
+  '创业': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop',
+  '非遗': 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop',
+  '文化': 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop',
+  '传承': 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=300&fit=crop',
+  '爱情': 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=300&fit=crop',
+  '科幻': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop',
+  '悬疑': 'https://images.unsplash.com/photo-1509248961895-40216a3149f8?w=400&h=300&fit=crop',
+  '搞笑': 'https://images.unsplash.com/photo-1543592939-a4e0c0f5ddcc?w=400&h=300&fit=crop',
+  '励志': 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop',
+  'default': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
+};
+
+// 根据类型获取封面图片
+const getDramaCover = (category: string): string => {
+  return dramaCovers[category] || dramaCovers.default;
 };
 
 // 农产品封面图片 - 使用公开可访问的图片
@@ -35,7 +51,7 @@ const featuredDramas = [
     author: '刘家柚园',
     views: '12.5万',
     likes: 8900,
-    cover: dramaCovers.folk,
+    cover: getDramaCover('乡村'),
     description: '讲述柚农老刘一家与柚子的感人故事',
   },
   {
@@ -45,7 +61,7 @@ const featuredDramas = [
     author: '王大姐特产店',
     views: '8.3万',
     likes: 5600,
-    cover: dramaCovers.ceo,
+    cover: getDramaCover('霸总'),
     description: '都市霸总误入乡村，邂逅质朴爱情',
   },
   {
@@ -55,27 +71,27 @@ const featuredDramas = [
     author: '红富士农场',
     views: '15.7万',
     likes: 12000,
-    cover: dramaCovers.live,
+    cover: getDramaCover('带货'),
     description: '女主重生回到农村，用苹果致富的励志故事',
   },
   {
     id: '4',
     title: '末世农场的希望',
-    category: '末世',
+    category: '故事版',
     author: '希望农场',
     views: '6.2万',
     likes: 4200,
-    cover: dramaCovers.apocalypse,
+    cover: getDramaCover('末世'),
     description: '末世幸存者在农村重建家园的感人故事',
   },
   {
     id: '5',
     title: '穿越古代当农民',
-    category: '穿越',
+    category: '故事版',
     author: '古村驿站',
     views: '9.8万',
     likes: 7800,
-    cover: dramaCovers.timetravel,
+    cover: getDramaCover('穿越'),
     description: '现代人穿越到古代农村，用智慧改变命运',
   },
 ];

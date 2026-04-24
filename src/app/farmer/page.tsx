@@ -4,12 +4,18 @@ import { Video, ShoppingBag, ArrowRight, Sparkles, TrendingUp, Users, Plus } fro
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-// 短剧封面图片
-const dramaCovers = {
-  folk: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
-  ceo: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-  live: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
-  creation: 'https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?w=400&h=300&fit=crop',
+// 短剧封面图片 - 根据类型显示对应封面
+const dramaCovers: Record<string, string> = {
+  '民俗版': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
+  '故事版': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
+  '带货版': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
+  '创作中': 'https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?w=400&h=300&fit=crop',
+  'default': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
+};
+
+// 根据类型获取封面图片
+const getFarmerDramaCover = (category: string): string => {
+  return dramaCovers[category] || dramaCovers.default;
 };
 
 const stats = [
@@ -20,10 +26,10 @@ const stats = [
 ];
 
 const recentDramas = [
-  { id: '1', title: '柚子飘香的秘密', views: '12.5万', status: '已发布', createdAt: '2024-01-15', cover: dramaCovers.folk },
-  { id: '2', title: '霸总的乡村奇遇', views: '8.3万', status: '已发布', createdAt: '2024-01-12', cover: dramaCovers.ceo },
-  { id: '3', title: '重生之我在农村卖苹果', views: '15.7万', status: '已发布', createdAt: '2024-01-10', cover: dramaCovers.live },
-  { id: '4', title: '农户创作中', views: '0', status: '创作中', createdAt: '2024-01-18', cover: dramaCovers.creation },
+  { id: '1', title: '柚子飘香的秘密', views: '12.5万', status: '已发布', createdAt: '2024-01-15', cover: getFarmerDramaCover('民俗版') },
+  { id: '2', title: '霸总的乡村奇遇', views: '8.3万', status: '已发布', createdAt: '2024-01-12', cover: getFarmerDramaCover('故事版') },
+  { id: '3', title: '重生之我在农村卖苹果', views: '15.7万', status: '已发布', createdAt: '2024-01-10', cover: getFarmerDramaCover('带货版') },
+  { id: '4', title: '农户创作中', views: '0', status: '创作中', createdAt: '2024-01-18', cover: getFarmerDramaCover('创作中') },
 ];
 
 const quickActions = [

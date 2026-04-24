@@ -10,17 +10,47 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// 短剧封面图片 - 使用公开可访问的图片
-const dramaCovers = {
-  folk: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop',
-  ceo: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-  live: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop',
-  rebirth: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop',
-  apocalypse: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop',
-  timetravel: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=300&fit=crop',
-  rich: 'https://images.unsplash.com/photo-1510797215324-95aa89f43c33?w=400&h=300&fit=crop',
-  palace: 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop',
-  fantasy: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop',
+// 短剧封面图片 - 根据类型显示对应封面
+const dramaCovers: Record<string, string> = {
+  // 故事版类型
+  '霸总': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop', // 都市帅气男性
+  '重生': 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=300&fit=crop', // 女性特写
+  '末世': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop', // 黑暗废墟
+  '穿越': 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=400&h=300&fit=crop', // 古风女子
+  '豪门': 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop', // 豪华场景
+  '宫斗': 'https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=400&h=300&fit=crop', // 宫廷风格
+  '仙侠': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop', // 仙山云雾
+  '乡村': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop', // 田园风光
+  '传统文化': 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop', // 传统文化
+  // 带货版类型
+  '带货': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop', // 直播带货
+  '创业': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop', // 创业奋斗
+  // 民俗版类型
+  '非遗': 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop', // 手工艺
+  '文化': 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop', // 民俗文化
+  '传承': 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=300&fit=crop', // 传承
+  // 其他
+  '爱情': 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&h=300&fit=crop', // 浪漫爱情
+  '科幻': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop', // 科幻
+  '悬疑': 'https://images.unsplash.com/photo-1509248961895-40216a3149f8?w=400&h=300&fit=crop', // 悬疑
+  '搞笑': 'https://images.unsplash.com/photo-1543592939-a4e0c0f5ddcc?w=400&h=300&fit=crop', // 搞笑
+  '励志': 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=300&fit=crop', // 励志
+  'default': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop', // 默认田园
+};
+
+// 根据类型获取封面图片
+const getCoverByGenre = (tags: string[], category: string): string => {
+  // 优先根据category类型获取封面
+  if (category === '民俗版') return dramaCovers['传统文化'] || dramaCovers.default;
+  if (category === '带货版') return dramaCovers['带货'];
+  if (category === '故事版') {
+    // 故事版优先根据标签获取封面
+    for (const tag of tags) {
+      if (dramaCovers[tag]) return dramaCovers[tag];
+    }
+    return dramaCovers['default'];
+  }
+  return dramaCovers.default;
 };
 
 const allDramas = [
@@ -32,7 +62,7 @@ const allDramas = [
     author: '刘家柚园',
     views: '12.5万',
     likes: 8900,
-    cover: dramaCovers.folk,
+    cover: getCoverByGenre(['乡村', '家庭', '励志'], '民俗版'),
     description: '讲述柚农老刘一家与柚子的感人故事，展现乡村生活的美好与艰辛。',
     tags: ['乡村', '家庭', '励志'],
   },
@@ -44,7 +74,7 @@ const allDramas = [
     author: '王大姐特产店',
     views: '8.3万',
     likes: 5600,
-    cover: dramaCovers.ceo,
+    cover: getCoverByGenre(['霸总', '爱情', '乡村'], '故事版'),
     description: '都市霸总误入乡村，邂逅质朴爱情，在田园中找回初心。',
     tags: ['霸总', '爱情', '乡村'],
   },
@@ -56,7 +86,7 @@ const allDramas = [
     author: '红富士农场',
     views: '15.7万',
     likes: 12000,
-    cover: dramaCovers.live,
+    cover: getCoverByGenre(['重生', '创业', '带货'], '带货版'),
     description: '女主重生回到农村，用智慧和汗水种植优质苹果，带领乡亲致富。',
     tags: ['重生', '创业', '带货'],
   },
@@ -68,7 +98,7 @@ const allDramas = [
     author: '云锦阁',
     views: '6.2万',
     likes: 4200,
-    cover: dramaCovers.palace,
+    cover: getCoverByGenre(['非遗', '文化', '传承'], '民俗版'),
     description: '记录古镇非遗传承人的故事，展现传统手工艺的魅力。',
     tags: ['非遗', '文化', '传承'],
   },
@@ -80,7 +110,7 @@ const allDramas = [
     author: '科技农场',
     views: '9.8万',
     likes: 7800,
-    cover: dramaCovers.apocalypse,
+    cover: getCoverByGenre(['末世', '科幻', '农业'], '故事版'),
     description: '末世背景下，一群人靠智慧农业重建家园的希望故事。',
     tags: ['末世', '科幻', '农业'],
   },
@@ -92,7 +122,7 @@ const allDramas = [
     author: '茶山人家',
     views: '11.2万',
     likes: 9500,
-    cover: dramaCovers.timetravel,
+    cover: getCoverByGenre(['穿越', '茶文化', '历史'], '民俗版'),
     description: '现代茶艺师穿越到古代，与茶农一起书写茶文化传奇。',
     tags: ['穿越', '茶文化', '历史'],
   },
@@ -104,7 +134,7 @@ const allDramas = [
     author: '田园梦工厂',
     views: '7.5万',
     likes: 6100,
-    cover: dramaCovers.rich,
+    cover: getCoverByGenre(['豪门', '逆袭', '爱情'], '故事版'),
     description: '豪门千金隐瞒身份来到农村，经历了从娇娇女到励志女孩的蜕变。',
     tags: ['豪门', '逆袭', '爱情'],
   },
@@ -116,7 +146,7 @@ const allDramas = [
     author: '云雾山庄',
     views: '8.9万',
     likes: 7200,
-    cover: dramaCovers.fantasy,
+    cover: getCoverByGenre(['仙侠', '奇幻', '农业'], '故事版'),
     description: '修仙者下山历练，在农村用仙法帮助村民致富的奇妙故事。',
     tags: ['仙侠', '奇幻', '农业'],
   },
@@ -128,7 +158,7 @@ const allDramas = [
     author: '振兴乡村',
     views: '13.4万',
     likes: 11000,
-    cover: dramaCovers.rebirth,
+    cover: getCoverByGenre(['重生', '村长', '致富'], '带货版'),
     description: '重生者回到过去成为村长，带领全村发展特色农业。',
     tags: ['重生', '村长', '致富'],
   },
