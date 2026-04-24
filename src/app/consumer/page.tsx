@@ -13,13 +13,17 @@ const dramaCovers = [
   'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1df2bf54-0d21-46a4-a906-f0431a3e05bc.jpeg?sign=1808551599-3e81ed112e-0-3f80f14a0289658aaa9912f1a7ebdb42c5bcf7ebc4e61cb24d096cbc0b7d5173',
 ];
 
-// 农产品图片
-const productImages = [
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_58998bf8-df20-4bf1-b7ab-f545141deb45.jpeg?sign=1808551590-36a2f184a0-0-a227690e395f8e73f09c0776d3844d3682c057f185f0a1d52f2d9f46dd1856e1',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_34f50fd7-e602-43f4-a5c3-b0f4fc71f9f7.jpeg?sign=1808551590-97a6ce30bd-0-113f8422cc83ba4681ff568f00b229e2f94c08c56e6d4d8b375eff5eaadd2729',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_3235a2f6-8e1d-4320-a2b8-69d1c45fdbbd.jpeg?sign=1808551591-cb76403b0d-0-f98b8b53040f3b76684cb208db22127b6b7043b9d45f941e3b02cf6430440565',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_542be8bc-9867-432f-9c3d-abd3a554ebe4.jpeg?sign=1808551591-4d25ce3dfa-0-8793e19cd5786d7035943619d40b80bbc84e0b84540b7d413121befa695e4274',
-];
+// 农产品图片 - 每种产品对应类型的图片
+const productImages = {
+  apple: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_31db7a66-d94f-4fb0-89c7-668f412b44bf.jpeg?sign=1808552190-2224473377-0-94bdb0abca0744d49441eecab9bb0d51fda1fb7b8bbc0109ed0f4de7843cf8c9',
+  honey: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_14d15101-7591-404d-8a66-9e21f9504dac.jpeg?sign=1808552190-39daf7b7fb-0-e64248a4b3bc50f16e72ef0f8e4a5b602cb0c4d9cd3b1918724e66817a02c423',
+  sweetPotato: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_acc70e5d-07cd-43ab-9a9f-f2f59a93d74e.jpeg?sign=1808552191-c65f9b4a47-0-5d28b2a3e628369e1a50bc7712dbab8dcfc2171ae947a2915dfd41027ea9dfd3',
+  blueberry: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_801fc3d2-69ab-4dcc-a034-ad955950710e.jpeg?sign=1808552192-40bfea0e49-0-1c2063cfb2c89ff7c761054fd53f608a3da49caa5fade6da07f433bdefa04e20',
+  tea: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_a6ec16d4-03f8-47ad-8f98-2c38d6a90956.jpeg?sign=1808552192-1a96dbaafa-0-73891e1a4202735ac907cd5c569cd1afd88456b53185b93c77efbec9b09b9b0c',
+  mushroom: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_162b1f5c-ef76-4424-9366-eb319ec2abb3.jpeg?sign=1808552191-ad9a93e8b4-0-4ccb3010909732fb8b16c242328c95bd4256657402804cf71cad27f4c522460f',
+  rice: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_86626f6f-9b70-4f9c-97d5-55dd94d8af59.jpeg?sign=1808552190-8b62c8be1f-0-4989a9b5d0c8c43538aca616bb8ce0b9cef71743c96d41eb5e3930aa422f9e4c',
+  orange: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1d061dac-2f40-44cf-873b-6bc0e2aaf3ae.jpeg?sign=1808552192-4bdbee6bec-0-55363fe0b0ba3536c3c771ea1ee513c434b06b4c35da3c84d35c382a5de1424b',
+};
 
 const featuredDramas = [
   {
@@ -71,7 +75,7 @@ const hotProducts = [
     price: 39.9,
     originalPrice: 59.9,
     sales: 2580,
-    image: productImages[0],
+    image: productImages.apple,
     farm: '红富士农场',
   },
   {
@@ -80,7 +84,7 @@ const hotProducts = [
     price: 68.0,
     originalPrice: 98.0,
     sales: 1860,
-    image: productImages[1],
+    image: productImages.honey,
     farm: '深山蜂场',
   },
   {
@@ -89,7 +93,7 @@ const hotProducts = [
     price: 28.8,
     originalPrice: 38.8,
     sales: 3200,
-    image: productImages[2],
+    image: productImages.sweetPotato,
     farm: '绿色田园',
   },
   {
@@ -98,7 +102,7 @@ const hotProducts = [
     price: 88.0,
     originalPrice: 128.0,
     sales: 1560,
-    image: productImages[3],
+    image: productImages.blueberry,
     farm: '云南蓝莓基地',
   },
 ];
