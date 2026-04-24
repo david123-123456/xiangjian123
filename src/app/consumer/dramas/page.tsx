@@ -10,16 +10,6 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-// 短剧封面图片
-const dramaCovers = [
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1467257c-8941-4a62-a58b-257d7f96948c.jpeg?sign=1808551597-e576537e09-0-c66cfc375616d258a039534b5805258a55c9ec7f41673f56338548647dd2ddd6',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_d3ec4e66-cf63-49f4-b827-a685d54c2c98.jpeg?sign=1808551598-12fcda7ecb-0-6a6afee286e25dcd80d3632a211d413c31963e254273fa647629a07b06d9e8cc',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_f065b8d4-106f-42b7-b05b-b7b18e265661.jpeg?sign=1808551598-881aaeefdf-0-ee819cae4188d826424d28915b093462500847938eeac593672d5b7c303f2093',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1df2bf54-0d21-46a4-a906-f0431a3e05bc.jpeg?sign=1808551599-3e81ed112e-0-3f80f14a0289658aaa9912f1a7ebdb42c5bcf7ebc4e61cb24d096cbc0b7d5173',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_97ccb309-c254-4a77-b539-e9172550f31b.jpeg?sign=1808551591-513fd2507e-0-db665212101cd42a701f72273bf3b98c6933e57b2900a0c3c36dc7e859381f2f',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_9288f439-ab08-49ec-af2f-62cffbd54484.jpeg?sign=1808551591-5a924d8c94-0-9a331bd34e70a8e76bd59e6f3bd0d7f3835747f92681e9e27db2bebbadf83af6',
-];
-
 const allDramas = [
   {
     id: '1',
@@ -29,7 +19,6 @@ const allDramas = [
     author: '刘家柚园',
     views: '12.5万',
     likes: 8900,
-    cover: dramaCovers[0],
     description: '讲述柚农老刘一家与柚子的感人故事，展现乡村生活的美好与艰辛。',
     tags: ['乡村', '家庭', '励志'],
   },
@@ -41,7 +30,6 @@ const allDramas = [
     author: '王大姐特产店',
     views: '8.3万',
     likes: 5600,
-    cover: dramaCovers[1],
     description: '都市霸总误入乡村，邂逅质朴爱情，在田园中找回初心。',
     tags: ['霸总', '爱情', '乡村'],
   },
@@ -53,7 +41,6 @@ const allDramas = [
     author: '红富士农场',
     views: '15.7万',
     likes: 12000,
-    cover: dramaCovers[2],
     description: '女主重生回到农村，用智慧和汗水种植优质苹果，带领乡亲致富。',
     tags: ['重生', '创业', '带货'],
   },
@@ -65,7 +52,6 @@ const allDramas = [
     author: '云锦阁',
     views: '6.2万',
     likes: 4200,
-    cover: dramaCovers[3],
     description: '记录古镇非遗传承人的故事，展现传统手工艺的魅力。',
     tags: ['非遗', '文化', '传承'],
   },
@@ -77,7 +63,6 @@ const allDramas = [
     author: '科技农场',
     views: '9.8万',
     likes: 7800,
-    cover: dramaCovers[4],
     description: '末世背景下，一群人靠智慧农业重建家园的希望故事。',
     tags: ['末世', '科幻', '农业'],
   },
@@ -89,7 +74,6 @@ const allDramas = [
     author: '茶山人家',
     views: '11.2万',
     likes: 9500,
-    cover: dramaCovers[5],
     description: '现代茶艺师穿越到古代，与茶农一起书写茶文化传奇。',
     tags: ['穿越', '茶文化', '历史'],
   },
@@ -180,15 +164,10 @@ export default function ConsumerDramasPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDramas.map((drama) => (
             <Card key={drama.id} className="rural-card-hover overflow-hidden">
-              <div className="aspect-video relative cursor-pointer group overflow-hidden">
-                <img
-                  src={drama.cover}
-                  alt={drama.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-[#2d5016] ml-1" />
+              <div className="aspect-video bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative cursor-pointer group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-[#2d5016]/80 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="w-8 h-8 text-white ml-1" />
                   </div>
                 </div>
                 <Badge className="absolute top-2 left-2 bg-[#2d5016]">{drama.category}</Badge>

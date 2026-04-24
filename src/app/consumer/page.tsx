@@ -5,26 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-// 短剧封面图片
-const dramaCovers = [
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1467257c-8941-4a62-a58b-257d7f96948c.jpeg?sign=1808551597-e576537e09-0-c66cfc375616d258a039534b5805258a55c9ec7f41673f56338548647dd2ddd6',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_d3ec4e66-cf63-49f4-b827-a685d54c2c98.jpeg?sign=1808551598-12fcda7ecb-0-6a6afee286e25dcd80d3632a211d413c31963e254273fa647629a07b06d9e8cc',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_f065b8d4-106f-42b7-b05b-b7b18e265661.jpeg?sign=1808551598-881aaeefdf-0-ee819cae4188d826424d28915b093462500847938eeac593672d5b7c303f2093',
-  'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1df2bf54-0d21-46a4-a906-f0431a3e05bc.jpeg?sign=1808551599-3e81ed112e-0-3f80f14a0289658aaa9912f1a7ebdb42c5bcf7ebc4e61cb24d096cbc0b7d5173',
-];
-
-// 农产品图片 - 每种产品对应类型的图片
-const productImages = {
-  apple: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_31db7a66-d94f-4fb0-89c7-668f412b44bf.jpeg?sign=1808552190-2224473377-0-94bdb0abca0744d49441eecab9bb0d51fda1fb7b8bbc0109ed0f4de7843cf8c9',
-  honey: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_14d15101-7591-404d-8a66-9e21f9504dac.jpeg?sign=1808552190-39daf7b7fb-0-e64248a4b3bc50f16e72ef0f8e4a5b602cb0c4d9cd3b1918724e66817a02c423',
-  sweetPotato: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_acc70e5d-07cd-43ab-9a9f-f2f59a93d74e.jpeg?sign=1808552191-c65f9b4a47-0-5d28b2a3e628369e1a50bc7712dbab8dcfc2171ae947a2915dfd41027ea9dfd3',
-  blueberry: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_801fc3d2-69ab-4dcc-a034-ad955950710e.jpeg?sign=1808552192-40bfea0e49-0-1c2063cfb2c89ff7c761054fd53f608a3da49caa5fade6da07f433bdefa04e20',
-  tea: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_a6ec16d4-03f8-47ad-8f98-2c38d6a90956.jpeg?sign=1808552192-1a96dbaafa-0-73891e1a4202735ac907cd5c569cd1afd88456b53185b93c77efbec9b09b9b0c',
-  mushroom: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_162b1f5c-ef76-4424-9366-eb319ec2abb3.jpeg?sign=1808552191-ad9a93e8b4-0-4ccb3010909732fb8b16c242328c95bd4256657402804cf71cad27f4c522460f',
-  rice: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_86626f6f-9b70-4f9c-97d5-55dd94d8af59.jpeg?sign=1808552190-8b62c8be1f-0-4989a9b5d0c8c43538aca616bb8ce0b9cef71743c96d41eb5e3930aa422f9e4c',
-  orange: 'https://coze-coding-project.tos.coze.site/coze_storage_7632202352149168164/image/generate_image_1d061dac-2f40-44cf-873b-6bc0e2aaf3ae.jpeg?sign=1808552192-4bdbee6bec-0-55363fe0b0ba3536c3c771ea1ee513c434b06b4c35da3c84d35c382a5de1424b',
-};
-
 const featuredDramas = [
   {
     id: '1',
@@ -33,7 +13,7 @@ const featuredDramas = [
     author: '刘家柚园',
     views: '12.5万',
     likes: 8900,
-    cover: dramaCovers[0],
+    cover: '/api/placeholder/400/300',
     description: '讲述柚农老刘一家与柚子的感人故事',
   },
   {
@@ -43,7 +23,7 @@ const featuredDramas = [
     author: '王大姐特产店',
     views: '8.3万',
     likes: 5600,
-    cover: dramaCovers[1],
+    cover: '/api/placeholder/400/300',
     description: '都市霸总误入乡村，邂逅质朴爱情',
   },
   {
@@ -53,18 +33,8 @@ const featuredDramas = [
     author: '红富士农场',
     views: '15.7万',
     likes: 12000,
-    cover: dramaCovers[2],
+    cover: '/api/placeholder/400/300',
     description: '女主重生回到农村，用苹果致富的励志故事',
-  },
-  {
-    id: '4',
-    title: '乡村创业记',
-    category: '故事版',
-    author: '返乡青年',
-    views: '6.2万',
-    likes: 4200,
-    cover: dramaCovers[3],
-    description: '年轻大学生返乡创业，带领村民共同致富',
   },
 ];
 
@@ -75,7 +45,7 @@ const hotProducts = [
     price: 39.9,
     originalPrice: 59.9,
     sales: 2580,
-    image: productImages.apple,
+    image: '/api/placeholder/200/200',
     farm: '红富士农场',
   },
   {
@@ -84,7 +54,7 @@ const hotProducts = [
     price: 68.0,
     originalPrice: 98.0,
     sales: 1860,
-    image: productImages.honey,
+    image: '/api/placeholder/200/200',
     farm: '深山蜂场',
   },
   {
@@ -93,17 +63,8 @@ const hotProducts = [
     price: 28.8,
     originalPrice: 38.8,
     sales: 3200,
-    image: productImages.sweetPotato,
+    image: '/api/placeholder/200/200',
     farm: '绿色田园',
-  },
-  {
-    id: '4',
-    name: '云南新鲜蓝莓',
-    price: 88.0,
-    originalPrice: 128.0,
-    sales: 1560,
-    image: productImages.blueberry,
-    farm: '云南蓝莓基地',
   },
 ];
 
@@ -166,13 +127,10 @@ export default function ConsumerHomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {featuredDramas.map((drama) => (
             <Card key={drama.id} className="rural-card-hover overflow-hidden">
-              <div className="aspect-video relative overflow-hidden">
-                <img
-                  src={drama.cover}
-                  alt={drama.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/20" />
+              <div className="aspect-video bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Video className="w-16 h-16 text-[#4a7c23]/40" />
+                </div>
                 <Badge className="absolute top-2 left-2 bg-[#2d5016]">{drama.category}</Badge>
               </div>
               <CardHeader className="pb-2">
@@ -217,12 +175,10 @@ export default function ConsumerHomePage() {
         <div className="grid md:grid-cols-3 gap-6">
           {hotProducts.map((product) => (
             <Card key={product.id} className="rural-card-hover overflow-hidden">
-              <div className="aspect-square relative overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+              <div className="aspect-square bg-gradient-to-br from-[#8bc34a]/20 to-[#4a7c23]/20 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <ShoppingBag className="w-16 h-16 text-[#4a7c23]/40" />
+                </div>
                 <Badge className="absolute top-2 right-2 bg-red-500">热卖</Badge>
               </div>
               <CardContent className="pt-4">
